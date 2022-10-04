@@ -42,6 +42,7 @@ alias gd='git diff'
 alias gds='git diff --staged'
 alias gf='git fetch'
 alias gl='git pull'
+alias glog='git log --oneline --decorate --graph'
 
 alias gpp='git push'  # Changed to not collide with GitPod's `gp`.
 alias gpd='git push --dry-run'
