@@ -18,7 +18,7 @@ function exec-daemon() {
         kubectl exec -it "$i" -c ws-daemon -- sh -c "cd /mnt/workingarea;sh"
         return
       done
-      return 
+      return
     fi
 
     kubectl exec -it "$daemon" -c ws-daemon -- sh -c "cd /mnt/workingarea;sh"
@@ -39,7 +39,7 @@ function exec-host() {
         kubectl exec -it "$i" -c ws-daemon -- sh -c "nsenter -t 1 -p -u -m -n bash"
         return
       done
-      return 
+      return
     fi
 
     kubectl exec -it "$daemon" -c ws-daemon -- sh -c "nsenter -t 1 -p -u -m -n bash"
@@ -173,8 +173,8 @@ function preview-ctx() {
 
 function _pending-ws-impl() {
   workspace_pods=$(kubectl get pods -l workspaceType=regular -o wide)
-  gpctl workspaces list | grep PENDING | while read workspace 
-  do 
+  gpctl workspaces list | grep PENDING | while read workspace
+  do
     workspace_id=$(echo "$workspace" | awk '{print  $3}')
     owner=$(echo "$workspace" | awk '{print  $1}')
     pod=$(echo "$workspace_pods" | grep "$workspace_id")
@@ -184,7 +184,7 @@ function _pending-ws-impl() {
   done
 }
 
-function pending-ws() {  
+function pending-ws() {
   _pending-ws-impl | sort -k6 -h | column -t
 }
 
@@ -216,4 +216,18 @@ function node-ws-count() {
 
 function node-prebuild-count() {
   kubectl get pods -o wide --sort-by=.spec.nodeName -o custom-columns=:.spec.nodeName --selector workspaceType=prebuild | grep "\S" | uniq -c | sort -nr -k1,1
+}
+
+function get-workspace-details() {
+  if [ -z "$1" ]; then
+    kubectl get pods --sort-by=.spec.nodeName  --selector=component=workspace -o jsonpath='{range .items[*]}{.metadata.labels.metaID}{"\t"}{.status.phase}{"\t"}{.metadata.name}{"\t\t"}{.spec.nodeName}{"\t"}{.spec.containers[].env[?(@.name=="GITPOD_GIT_USER_EMAIL")].value}{"\t"}{.spec.containers[].env[?(@.name=="GITPOD_IDE_ALIAS")].value}{"\t"}{.spec.containers[].env[?(@.name=="GITPOD_WORKSPACE_CONTEXT_URL")].value}{"\n"}{end}'
+    return
+  fi
+
+  kubectl get pods "$1" -o jsonpath='{.metadata.labels.metaID}{"\t"}{.status.phase}{"\t"}{.metadata.name}{"\t\t"}{.spec.nodeName}{"\t"}{.spec.containers[].env[?(@.name=="GITPOD_GIT_USER_EMAIL")].value}{"\t"}{.spec.containers[].env[?(@.name=="GITPOD_IDE_ALIAS")].value}{"\t"}{.spec.containers[].env[?(@.name=="GITPOD_WORKSPACE_CONTEXT_URL")].value}{"\n"}'
+}
+
+function connection-count() {
+  echo "netstat -anpt 2>&1 | tail -n +5 | awk '{print $7,$6}' | sort -k1,1 -k3,3 \
+    | sed 's#/# #' | column -t | uniq -c"
 }
