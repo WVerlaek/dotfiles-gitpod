@@ -1,5 +1,6 @@
 source /home/gitpod/.dotfiles/gcloud/.alias
-# source /home/gitpod/.dotfiles/git/.alias
+# TODO: Remove when zsh is working?
+source /home/gitpod/.dotfiles/git/.alias
 source /home/gitpod/.dotfiles/gitpod/.alias
 source /home/gitpod/.dotfiles/kubernetes/.alias
 source /home/gitpod/.dotfiles/system/.alias
