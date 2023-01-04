@@ -44,6 +44,7 @@ alias gf='git fetch'
 alias gl='git pull'
 alias glog='git log --oneline --decorate --graph'
 
+alias gp='git push'
 alias gpp='git push'  # Changed to not collide with GitPod's `gp`.
 alias gpd='git push --dry-run'
 alias gpf='git push --force-with-lease'
