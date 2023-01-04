@@ -1,5 +1,5 @@
 #!/bin/bash
-## Credits: https://github.com/easyCZ/dotfiles/blob/master/setup.sh
+## From: https://github.com/easyCZ/dotfiles/blob/master/setup.sh
 set -ex
 
 echo "Setting up dotfiles"

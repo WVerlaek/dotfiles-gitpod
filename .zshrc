@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -71,10 +71,11 @@ ZSH_THEME="spaceship"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git z
+    git z kube-ps1
 )
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.dotfiles/.bash_aliases
 
 # User configuration
 
@@ -101,6 +102,20 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# kube-ps1 (shows current k8s context)
+function get_cluster_name() {
+  echo "$1" | sed 's:.*_::'
+}
+KUBE_PS1_CLUSTER_FUNCTION=get_cluster_name
+KUBE_PS1_NS_ENABLE=false
+KUBE_PS1_SYMBOL_ENABLE=false
+KUBE_PS1_BG_COLOR=''
+KUBE_PS1_PREFIX=""
+KUBE_PS1_CTX_COLOR="white"
+KUBE_PS1_SUFFIX=" \$ " # " \ue0b0 "
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+PS1=$PS1'$(kube_ps1)'
 
 # kubectl auto complete
 source <(kubectl completion zsh)
