@@ -1,13 +1,13 @@
-source ~/gcloud/.alias
-# source ~/git/.alias
-source ~/gitpod/.alias
-source ~/kubernetes/.alias
-source ~/system/.alias
+source /home/gitpod/.dotfiles/gcloud/.alias
+# source /home/gitpod/.dotfiles/git/.alias
+source /home/gitpod/.dotfiles/gitpod/.alias
+source /home/gitpod/.dotfiles/kubernetes/.alias
+source /home/gitpod/.dotfiles/system/.alias
 
-source ~/gitpod/.functions
-source ~/kubernetes/.functions
-source ~/dev/.functions
-source ~/system/.functions
+source /home/gitpod/.dotfiles/gitpod/.functions
+source /home/gitpod/.dotfiles/kubernetes/.functions
+source /home/gitpod/.dotfiles/dev/.functions
+source /home/gitpod/.dotfiles/system/.functions
 
-source ~/kubernetes/.env
-source ~/git/.run
+source /home/gitpod/.dotfiles/kubernetes/.env
+source /home/gitpod/.dotfiles/git/.run

@@ -125,3 +125,6 @@ PS1=$PS1'$(kube_ps1)'
 
 # kubectl auto complete
 source <(kubectl completion zsh)
+
+# custom git aliases
+alias gcm="git commit -m"  # Changed from 'git checkout master'

@@ -16,9 +16,9 @@ fi
 
 # Install spaceship
 # https://github.com/spaceship-prompt/spaceship-prompt
-ZSH_CUSTOM="/home/gitpod/.oh-my-zsh/custom"
-git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+# ZSH_CUSTOM="/home/gitpod/.oh-my-zsh/custom"
+# git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+# ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
 if [[ -d "/home/gitpod/.dotfiles" ]]; then
     # In gitpod, dotfiles are stored in this directory
