@@ -231,3 +231,8 @@ function connection-count() {
   echo "netstat -anpt 2>&1 | tail -n +5 | awk '{print $7,$6}' | sort -k1,1 -k3,3 \
     | sed 's#/# #' | column -t | uniq -c"
 }
+
+function preview-url() {
+  local context="${1:-$(kubectx -c)}"
+  echo "https://${context}.preview.gitpod-dev.com/workspaces"
+}
