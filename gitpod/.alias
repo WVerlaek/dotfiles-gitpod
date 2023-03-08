@@ -1,5 +1,7 @@
 # gp is aliased to "git push"
 alias gitpod="/usr/bin/gp"
+# stop = gp stop
+alias stop="/usr/bin/gp stop"
 
 alias get-daemon="kubectl get pods -l component=ws-daemon --sort-by=.metadata.creationTimestamp"
 alias get-manager="kubectl get pods -l component=ws-manager --sort-by=.metadata.creationTimestamp"
