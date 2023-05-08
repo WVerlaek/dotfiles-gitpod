@@ -1,4 +1,13 @@
-# gp is aliased to "git push"
+# gp with no arguments is aliased to "git push", and otherwise it runs the Gitpod CLI.
+function gp_wrapper() {
+  if [ "$#" -eq 0 ]; then
+    git push
+  else
+    /usr/bin/gp "$@"
+  fi
+}
+alias gp='gp_wrapper'
+
 alias gitpod="/usr/bin/gp"
 # stop = gp stop
 alias stop="/usr/bin/gp stop"
