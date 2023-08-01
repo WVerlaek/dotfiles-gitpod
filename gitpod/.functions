@@ -236,3 +236,8 @@ function preview-url() {
   local context="${1:-$(kubectx -c)}"
   echo "https://${context}.preview.gitpod-dev.com/workspaces"
 }
+
+function large-preview() {
+  export TF_VAR_with_large_vm=true
+  leeway run dev:preview
+}
