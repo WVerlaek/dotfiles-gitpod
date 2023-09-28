@@ -10,5 +10,6 @@ source /home/gitpod/.dotfiles/kubernetes/.functions
 source /home/gitpod/.dotfiles/dev/.functions
 source /home/gitpod/.dotfiles/system/.functions
 
+source /home/gitpod/.dotfiles/gitpod/.env
 source /home/gitpod/.dotfiles/kubernetes/.env
 source /home/gitpod/.dotfiles/git/.run
