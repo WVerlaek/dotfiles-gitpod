@@ -243,5 +243,5 @@ function large-preview() {
 }
 
 function watchst() {
-  watch "$1 -o yaml | yq .status"
+  watch "$@ -o yaml | yq .status"
 }
